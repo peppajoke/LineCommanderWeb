@@ -40,11 +40,7 @@
           "dependencies": {
             "LineCommander": {
               "target": "Package",
-              "version": "[1.0.2, )"
-            },
-            "Syn.Bot.Channels": {
-              "target": "Package",
-              "version": "[2.0.1, )"
+              "version": "[1.0.8, )"
             }
           },
           "imports": [

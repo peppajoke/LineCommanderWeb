@@ -10,22 +10,26 @@
 <div class="text-center form-floating">
     <h1 class="display-4">What do you need?</h1>
     <div>
-        <textarea id="commandOutput" disabled style="width:40vw;height:40vh;white-space: pre-wrap;">
+        <textarea id="commandOutput" disabled style="width:70vw;height:40vh;white-space: pre-wrap;">
         </textarea>
     </div>
     <div>
-        <input style="width:35vw" id="commandInput" type="text" name="command" value="" />
+        <input style="width:65vw" id="commandInput" type="text" name="command" value="" />
         <button id="sendCommandButton" style="width:5vw">></button>
     </div>
 </div>
 
 <script>
+    $('#commandInput').focus();
     const sendCommand = () => {
+        const output = $('#commandOutput');
         const input = $('#commandInput').val();
         const sessionId = '@Model.SessionId';
+        output.append('\r\n------>' + input);
+        $('#commandInput').val('');
 
         $.get("/command/send?sessionId=" + sessionId + "&command=" + input, function(response) {
-            const output = $('#commandOutput');
+            
             response.messages.forEach(message => {
                 output.append('\r\n' + message);
             });

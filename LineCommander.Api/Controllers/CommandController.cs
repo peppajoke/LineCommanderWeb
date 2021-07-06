@@ -1,4 +1,9 @@
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using LineCommander.Api.Commands;
 using LineCommander.Api.CommandWeb;
 using LineCommander.Api.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +16,16 @@ namespace LineCommander.Api.Controllers
 
         public IActionResult Start()
         {
+            // todo: create session here
             var model = new StartCommandModel();
             return View(model);
         }
 
-        public IActionResult Send(string command, string sessionId)
+        public async Task<IActionResult> Send(string command, string sessionId)
         {
             var session = GetSession(sessionId);
-            var responses = session.SendCommand(command);
+            await session.SendCommand(command);
+            var responses = await session.FlushOutput();
             return Json( new { messages = responses });
         }
 
@@ -26,12 +33,12 @@ namespace LineCommander.Api.Controllers
         {
             if (_activeCommandSessions.ContainsKey(sessionId))
             {
-                return _activeCommandSessions[sessionId];
+                //return _activeCommandSessions[sessionId];
             }
-            else
-            {
-                return new CommandSession();
-            }
+            var session = new CommandSession();
+            session.AddSupportedCommands(new List<BaseCommand>() { new ConversationCommand() });
+            _activeCommandSessions.TryAdd(sessionId, session);
+            return session;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using LineCommander;
 
 namespace LineCommander.Api.Commands
@@ -10,12 +11,12 @@ namespace LineCommander.Api.Commands
             return "UR EMBARASSING ME";
         }
 
-        public override bool Execute(IEnumerable<string> arguments)
+        public override async Task<bool> Execute(IEnumerable<string> arguments)
         {
-            _console.WriteLine("hello doggy.");
-            var howTheyAre = _console.InputText("how are you today?");
-            _console.WriteLine("glad to her that you are " + howTheyAre);
-            return false;
+            await _console.WriteLine("hello doggy.");
+            var howTheyAre = await InputText("how are you today?");
+            await _console.WriteLine("glad to her that you are " + howTheyAre);
+            return true;
         }
 
         public override IEnumerable<string> MatchingBaseCommands()
