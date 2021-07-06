@@ -1,0 +1,47 @@
+@model StartCommandModel
+@{
+    ViewData["Title"] = "CMD";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<div class="text-center form-floating">
+    <h1 class="display-4">What do you need?</h1>
+    <div>
+        <textarea id="commandOutput" disabled style="width:40vw;height:40vh;white-space: pre-wrap;">
+        </textarea>
+    </div>
+    <div>
+        <input style="width:35vw" id="commandInput" type="text" name="command" value="" />
+        <button id="sendCommandButton" style="width:5vw">></button>
+    </div>
+</div>
+
+<script>
+    const sendCommand = () => {
+        const input = $('#commandInput').val();
+        const sessionId = '@Model.SessionId';
+
+        $.get("/command/send?sessionId=" + sessionId + "&command=" + input, function(response) {
+            const output = $('#commandOutput');
+            response.messages.forEach(message => {
+                output.append('\r\n' + message);
+            });
+
+            // IDK why I have to do it this way, whatever.
+            const outy = document.getElementById('commandOutput')
+            outy.scrollTop = outy.scrollHeight;
+        });
+    };
+
+    $('#commandInput').keypress(function(event){
+        if(event.keyCode == 13){
+            sendCommand();
+        }
+    });
+
+    $("#sendCommandButton").click(sendCommand);
+
+</script>
