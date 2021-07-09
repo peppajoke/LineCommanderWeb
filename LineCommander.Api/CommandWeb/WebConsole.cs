@@ -21,17 +21,21 @@ namespace LineCommander.Api.CommandWeb
         public async Task<string> ReadLine()
         {
             var pollCount = 0;
-            while (_incomingInputs.Count > 0)
+            Console.WriteLine("starting the polling....");
+            while (_incomingInputs.Count == 0)
             {
+                Console.WriteLine("Attempt");
                 _waitingForInput = true;
                 pollCount++;
-                Thread.Sleep(500);
+                Thread.Sleep(2000);
 
                 if (pollCount >= MAX_POLL_COUNT)
                 {
+                    Console.WriteLine("I GIVE UP");
                     throw new Exception("Command timeout.");
                 }
             }
+            Console.WriteLine("done trying");
             _waitingForInput = false;
             return _incomingInputs.Dequeue();
         }
@@ -47,6 +51,7 @@ namespace LineCommander.Api.CommandWeb
         }
         public async Task FeedInputLine(string input)
         {
+            Console.WriteLine("Response!");
             _incomingInputs.Enqueue(input);
         }
 
@@ -62,7 +67,7 @@ namespace LineCommander.Api.CommandWeb
 
         public bool IsWaitingForUserInput()
         {
-            return _waitingForInput && _incomingInputs.Count > 0;
+            return _waitingForInput && _incomingInputs.Count == 0;
         }
     }
 }

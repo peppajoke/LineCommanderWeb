@@ -21,14 +21,12 @@
 
 <script>
     $('#commandInput').focus();
-    const sendCommand = () => {
+    
+    const pollForMessages = () => {
         const output = $('#commandOutput');
-        const input = $('#commandInput').val();
         const sessionId = '@Model.SessionId';
-        output.append('\r\n------>' + input);
-        $('#commandInput').val('');
 
-        $.get("/command/send?sessionId=" + sessionId + "&command=" + input, function(response) {
+        $.get("/command/PollForMessages?sessionId=" + sessionId, function(response) {
             
             response.messages.forEach(message => {
                 output.append('\r\n' + message);
@@ -39,6 +37,22 @@
             outy.scrollTop = outy.scrollHeight;
         });
     };
+    
+    const sendCommand = () => {
+        const output = $('#commandOutput');
+        const input = $('#commandInput').val();
+        const sessionId = '@Model.SessionId';
+        output.append('\r\n------>' + input);
+        $('#commandInput').val('');
+
+        $.get("/command/send?sessionId=" + sessionId + "&command=" + input, function(response) {
+            setTimeout(() => {
+                pollForMessages();
+            }, 1000);
+        });
+    };
+
+
 
     $('#commandInput').keypress(function(event){
         if(event.keyCode == 13){

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5c56rJHHuyAx+0GcfsJq6vsHa/X9MxHVjawaqeaosP3pWXi3xGT5n9O3C+JTrgqi57Gqp3azHU5cen/05ZRCBA==",
+  "dgSpecHash": "1nOB106JRNooYD+2Y2Kz42YYBUzN4yqjmU3rVtVs+1jA6zPa7KeNYR1XYCbAj++TDosGRy7YqtJcmLbkCuU1SA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jackc\\Documents\\GitHub\\LineCommanderWeb\\LineCommander.Api\\LineCommander.Api.csproj",
+  "projectFilePath": "/Users/jackbauerle/code/LineCommanderweb/LineCommander.Api/LineCommander.Api.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jackc\\.nuget\\packages\\linecommander\\1.0.8\\linecommander.1.0.8.nupkg.sha512"
+    "/Users/jackbauerle/.nuget/packages/linecommander/1.0.8/linecommander.1.0.8.nupkg.sha512"
   ],
   "logs": []
 }

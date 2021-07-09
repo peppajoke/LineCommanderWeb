@@ -15,7 +15,7 @@ namespace LineCommander.Api.Commands
         {
             await _console.WriteLine("hello doggy.");
             var howTheyAre = await InputText("how are you today?");
-            await _console.WriteLine("glad to her that you are " + howTheyAre);
+            await _console.WriteLine("glad to hear that you are " + howTheyAre);
             return true;
         }
 

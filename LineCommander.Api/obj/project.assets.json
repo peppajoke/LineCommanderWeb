@@ -33,19 +33,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jackc\\.nuget\\packages\\": {}
+    "/Users/jackbauerle/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jackc\\Documents\\GitHub\\LineCommanderWeb\\LineCommander.Api\\LineCommander.Api.csproj",
+      "projectUniqueName": "/Users/jackbauerle/code/LineCommanderweb/LineCommander.Api/LineCommander.Api.csproj",
       "projectName": "LineCommander.Api",
-      "projectPath": "C:\\Users\\jackc\\Documents\\GitHub\\LineCommanderWeb\\LineCommander.Api\\LineCommander.Api.csproj",
-      "packagesPath": "C:\\Users\\jackc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jackc\\Documents\\GitHub\\LineCommanderWeb\\LineCommander.Api\\obj\\",
+      "projectPath": "/Users/jackbauerle/code/LineCommanderweb/LineCommander.Api/LineCommander.Api.csproj",
+      "packagesPath": "/Users/jackbauerle/.nuget/packages/",
+      "outputPath": "/Users/jackbauerle/code/LineCommanderweb/LineCommander.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jackc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/jackbauerle/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -92,7 +92,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.301/RuntimeIdentifierGraph.json"
       }
     }
   }

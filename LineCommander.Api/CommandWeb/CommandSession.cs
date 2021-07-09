@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LineCommander.Api.CommandWeb
@@ -22,7 +23,8 @@ namespace LineCommander.Api.CommandWeb
             }
             else
             {
-                await _commander.SendCommandInput(messageIn);
+                // initialize the command in the background, so it can stay alive after the request
+                new Thread(() => _commander.SendCommandInput(messageIn)) { IsBackground = true }.Start();
             }
         }
 

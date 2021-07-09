@@ -25,15 +25,24 @@ namespace LineCommander.Api.Controllers
         {
             var session = GetSession(sessionId);
             await session.SendCommand(command);
-            var responses = await session.FlushOutput();
-            return Json( new { messages = responses });
+            var messages = await session.FlushOutput();
+            // todo put polling boolean here
+            return Ok();
+        }
+
+        public async Task<IActionResult> PollForMessages(string sessionId)
+        {
+            Console.WriteLine("polling for messages");
+            var session = GetSession(sessionId);
+            var messages = await session.FlushOutput();
+            return Json( new { messages = messages } );
         }
 
         private CommandSession GetSession(string sessionId)
         {
             if (_activeCommandSessions.ContainsKey(sessionId))
             {
-                //return _activeCommandSessions[sessionId];
+                return _activeCommandSessions[sessionId];
             }
             var session = new CommandSession();
             session.AddSupportedCommands(new List<BaseCommand>() { new ConversationCommand() });
