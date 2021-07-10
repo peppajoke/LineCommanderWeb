@@ -28,6 +28,12 @@
 
         $.get("/command/PollForMessages?sessionId=" + sessionId, function(response) {
             
+            if (response.messages.length == 0) {
+                setTimeout(() => {
+                    pollForMessages();
+                }, 1000);
+            }
+
             response.messages.forEach(message => {
                 output.append('\r\n' + message);
             });

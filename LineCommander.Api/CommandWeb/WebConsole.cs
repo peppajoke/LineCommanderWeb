@@ -47,6 +47,7 @@ namespace LineCommander.Api.CommandWeb
 
         public async Task WriteLine(string message)
         {
+            Console.WriteLine("GOT A RESPONSE IN!");
             _outgoingOutputs.Enqueue(message);
         }
         public async Task FeedInputLine(string input)
@@ -60,7 +61,10 @@ namespace LineCommander.Api.CommandWeb
             var output = new List<string>();
             while (_outgoingOutputs.Count > 0) 
             {
-                output.Add(_outgoingOutputs.Dequeue());
+                Console.WriteLine("Found an output message!!");
+                var msg = _outgoingOutputs.Dequeue();
+                output.Add(msg);
+                Console.WriteLine(msg);
             }
             return output;
         }

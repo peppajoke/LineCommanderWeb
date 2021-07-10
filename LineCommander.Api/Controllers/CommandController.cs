@@ -35,6 +35,10 @@ namespace LineCommander.Api.Controllers
             Console.WriteLine("polling for messages");
             var session = GetSession(sessionId);
             var messages = await session.FlushOutput();
+            if (messages.Any())
+            {
+                Console.WriteLine("found message!!");
+            }
             return Json( new { messages = messages } );
         }
 
