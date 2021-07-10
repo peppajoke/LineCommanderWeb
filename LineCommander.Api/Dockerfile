@@ -1,4 +1,4 @@
 FROM gcr.io/google-appengine/aspnetcore:3.1
-COPY . /LineCommander.Api
-WORKDIR /LineCommander.Api
+COPY bin/Debug/netcoreapp3.1 /App
+WORKDIR /App
 ENTRYPOINT ["dotnet", "LineCommander.Api.dll"]
