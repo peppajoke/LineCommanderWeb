@@ -49,7 +49,7 @@ namespace LineCommander.Api.Controllers
                 return _activeCommandSessions[sessionId];
             }
             var session = new CommandSession();
-            session.AddSupportedCommands(new List<BaseCommand>() { new ConversationCommand() });
+            session.AddSupportedCommands(new List<BaseCommand>() { new ConversationCommand(), new ChatCommand() });
             _activeCommandSessions.TryAdd(sessionId, session);
             return session;
         }

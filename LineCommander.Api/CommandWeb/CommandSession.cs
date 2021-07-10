@@ -30,7 +30,12 @@ namespace LineCommander.Api.CommandWeb
 
         public async Task<IEnumerable<string>> FlushOutput()
         {
-            return await _console.FlushOutput();
+            var output = await _console.FlushOutput();
+            if (!_console.IsWaitingForUserInput())
+            {
+                
+            }
+            return output;
         }
 
         public void AddSupportedCommands(IEnumerable<BaseCommand> commands)
