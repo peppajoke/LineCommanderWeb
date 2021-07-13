@@ -4,5 +4,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="LineCommander" Version="1.0.9"/>
+    <PackageReference Include="KVaaS.Net" Version="0.0.1"/>
   </ItemGroup>
 </Project>
