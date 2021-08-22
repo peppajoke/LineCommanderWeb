@@ -17,15 +17,6 @@ namespace LineCommander.Api.Commands
 
             var converse = true;
             var aiResponse = "What did you want to talk about today?";
-            while (converse)
-            {
-                var userMessage = await InputText(aiResponse);
-                aiResponse = GetResponse(name, userMessage);
-                if (userMessage.ToUpper() == "BYE" || userMessage.ToUpper() == "GOODBYE")
-                {
-                    converse = false;
-                }
-            }
             await _console.WriteLine("See you later!");
             return false;
         }
